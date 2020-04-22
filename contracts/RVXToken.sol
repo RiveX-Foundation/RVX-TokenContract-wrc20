@@ -241,6 +241,7 @@ contract RVXToken is MinterRole, IERC20 {
     mapping(address => uint256) private _balances;
     mapping(address => mapping(address => uint256)) private _allowances;
     uint256 private _totalSupply;
+    uint256 private _maxAmount;
     modifier onlyPayloadSize(uint size) {
         require(msg.data.length >= size + 4);
         _;
@@ -255,6 +256,7 @@ contract RVXToken is MinterRole, IERC20 {
         _symbol = "RVX";
         _decimals = 18;
         _totalSupply = 4000000000 ether;
+        _maxAmount = 4000000000 ether;
         _balances[newOwner] = 4000000000 ether;
     }
 
@@ -272,7 +274,8 @@ contract RVXToken is MinterRole, IERC20 {
     }
 
     function mint(address account, uint256 amount) public onlyMinter returns(bool) {
-        require(_totalSupply.add(amount)<=_totalSupply);
+        require(amount>0);
+        require(_totalSupply.add(amount)<=_maxAmount);
         _mint(account, amount);
         return true;
     }
