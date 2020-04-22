@@ -174,7 +174,7 @@ library Roles {
     }
 }
 
-contract MinterRole is Context {
+contract MinterRole is Context,Ownable {
     using Roles for Roles.Role;
 
     event MinterAdded(address indexed account);
@@ -195,7 +195,7 @@ contract MinterRole is Context {
         return _minters.has(account);
     }
 
-    function addMinter(address account) public onlyMinter {
+    function addMinter(address account) public onlyOwner {
         _addMinter(account);
     }
 
@@ -232,7 +232,7 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-contract RVXToken is MinterRole, Ownable, IERC20 {
+contract RVXToken is MinterRole, IERC20 {
 
     using SafeMath for uint256;
     string private _name;
@@ -247,7 +247,7 @@ contract RVXToken is MinterRole, Ownable, IERC20 {
     }
 
     //constructor
-    function RVXToken(address newOwner) {
+    constructor (address newOwner) public {
         _owner = newOwner;
         _addMinter(newOwner);
         _removeMinter(msg.sender);
@@ -262,7 +262,7 @@ contract RVXToken is MinterRole, Ownable, IERC20 {
         require(msg.value > 0);
     }
 
-    function() external payable { //added default fallback function (if someone just deposits eth to contract, it can handle)
+    function() external payable { //added default fallback function (if someone just deposits wan to contract, it can handle)
         depositWAN();
     }
 
@@ -272,12 +272,13 @@ contract RVXToken is MinterRole, Ownable, IERC20 {
     }
 
     function mint(address account, uint256 amount) public onlyMinter returns(bool) {
+        require(_totalSupply.add(amount)<=_totalSupply);
         _mint(account, amount);
         return true;
     }
     
-    function burn(address account, uint256 amount) public onlyMinter returns(bool) {
-        _burn(account, amount);
+    function burn(uint256 amount) public onlyMinter returns(bool) {
+        _burn(msg.sender, amount);
         return true;
     }
 
@@ -343,7 +344,7 @@ contract RVXToken is MinterRole, Ownable, IERC20 {
     }
 
     function _mint(address account, uint256 amount) internal {
-        require(account != address(0), "ERC20: mint to the zero address");
+        require(account != address(0), "WRC20: mint to the zero address");
 
         _totalSupply = _totalSupply.add(amount);
         _balances[account] = _balances[account].add(amount);
@@ -359,20 +360,11 @@ contract RVXToken is MinterRole, Ownable, IERC20 {
     }
 
     function _approve(address owner, address spender, uint256 amount) internal {
-        require(owner != address(0), "ERC20: approve from the zero address");
-        require(spender != address(0), "ERC20: approve to the zero address");
+        require(owner != address(0), "WRC20: approve from the zero address");
+        require(spender != address(0), "WRC20: approve to the zero address");
 
         _allowances[owner][spender] = amount;
         emit Approval(owner, spender, amount);
     }
-
-    function _burnFrom(address account, uint256 value) internal {
-        _allowances[account][msg.sender] = _allowances[account][msg.sender].sub(value);
-        _burn(account, value);
-        emit Approval(account, msg.sender, _allowances[account][msg.sender]);
-    }
-
-
-
 
 }
