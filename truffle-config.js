@@ -1,10 +1,14 @@
 module.exports = {
   networks: {
-    ganache: {
-      host: "localhost",
-      port: 7545,
-      network_id: "*" // Match any network id
-    }
+    development: {
+      host: 'localhost',
+      port: 8686,
+      network_id: '3',
+      gas: 1000000,
+      gasPrice: 180e9,
+      // following address needed to be replaced with unlocked account on gwan node
+      from: '0xd0573f4fb4c0f021a2714ed77f483b8cde76771b'
+  }
   },
   compilers: {
     solc: {

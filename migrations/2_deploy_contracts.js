@@ -6,6 +6,6 @@ module.exports = function(deployer) {
   var owner=""; //funds get sent to this address
   var unlockdate; //specify unlock dates (ie. each month)
   var contractName="team";
-  deployer.deploy(TeamContract,creator,owner,unlockdate,contractName);
-  deployer.deploy(RVXToken);
+ // deployer.deploy(TeamContract,creator,owner,unlockdate,contractName);
+  deployer.deploy(RVXToken,"0x07dee23b955e7dffff6ba88e8dc632e38c4b23a8");
 };
