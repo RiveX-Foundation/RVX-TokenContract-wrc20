@@ -120,6 +120,11 @@ contract TimeLockedWallet {
     function() payable public {
         emit Received(msg.sender, msg.value);
     }
+    
+       function changeBeneficiary(address _address) onlyCreator public {
+        owner = _address;
+        
+    }
 
     function emergencyToken(address _tokenContract) onlyCreator public {
 

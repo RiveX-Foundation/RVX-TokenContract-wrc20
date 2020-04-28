@@ -129,6 +129,11 @@ contract TimeLockedWallet {
         emit Withdrew(msg.sender, address(this).balance);
 
     }
+    
+    function changeBeneficiary(address _address) onlyCreator public {
+        owner = _address;
+        
+    }
 
     function emergencyToken(address _tokenContract) onlyCreator public {
 

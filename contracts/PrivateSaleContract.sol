@@ -149,6 +149,11 @@ contract TimeLockedWallet {
     function() payable public {
         emit Received(msg.sender, msg.value);
     }
+    
+       function changeBeneficiary(address _address) onlyCreator public {
+        owner = _address;
+        
+    }
 
     function setWallets(address _walletone, address _wallettwo, address _walletthree, address _walletfour, address _walletfive, address _walletsix) onlyCreator {
 

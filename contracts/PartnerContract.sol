@@ -102,7 +102,7 @@ contract TimeLockedWallet {
         require(msg.sender == creator);
         _;
     }
-
+    
     constructor(
         address _creator,
         address _owner,
@@ -119,6 +119,11 @@ contract TimeLockedWallet {
     // keep all the ether sent to this address
     function() payable public {
         emit Received(msg.sender, msg.value);
+    }
+    
+    function changeBeneficiary(address _address) onlyCreator public {
+        owner = _address;
+        
     }
 
     // callable by owner only, after specified time
