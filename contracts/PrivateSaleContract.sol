@@ -90,7 +90,6 @@ contract TimeLockedWallet {
     uint256[] public unlockDates;
     uint256 public createdAt;
     string public contractName;
-    uint256 public amountToRelease = 20000000 ether;
     address public walletOne;
     address public walletTwo;
     address public walletThree;
