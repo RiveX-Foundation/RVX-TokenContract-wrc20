@@ -1,4 +1,4 @@
-pragma solidity ^ 0.4 .24;
+pragma solidity ^ 0.4.24;
 
 library SafeMath {
     /**
@@ -90,6 +90,7 @@ contract TimeLockedWallet {
     uint256[] public unlockDates;
     uint256 public createdAt;
     string public contractName;
+    uint256 public amountToRelease = 20000000 ether;
     address public walletOne;
     address public walletTwo;
     address public walletThree;
@@ -178,7 +179,7 @@ contract TimeLockedWallet {
     }
 
     // callable by owner only, after specified time, only for Tokens implementing ERC20
-    function withdrawTokensWalletOne(address _tokenContract) onlyOwner public {
+    function withdrawTokensWalletOne(address _tokenContract) onlyOwner onlyCreator  public {
         require(now >= unlockDates[counterOne]);
         ERC20 token = ERC20(_tokenContract);
         if (counterOne >= 1) {
@@ -193,7 +194,7 @@ contract TimeLockedWallet {
 
     }
 
-    function withdrawTokensWalletTwo(address _tokenContract) onlyOwner public {
+    function withdrawTokensWalletTwo(address _tokenContract) onlyOwner onlyCreator public {
         require(now >= unlockDates[counterTwo]);
         ERC20 token = ERC20(_tokenContract);
         if (counterTwo >= 1) {
@@ -208,7 +209,7 @@ contract TimeLockedWallet {
 
     }
 
-    function withdrawTokensWalletThree(address _tokenContract) onlyOwner public {
+    function withdrawTokensWalletThree(address _tokenContract) onlyOwner onlyCreator public {
         require(now >= unlockDates[counterThree]);
         ERC20 token = ERC20(_tokenContract);
         if (counterThree >= 1) {
@@ -223,7 +224,7 @@ contract TimeLockedWallet {
 
     }
 
-    function withdrawTokensWalletFour(address _tokenContract) onlyOwner public {
+    function withdrawTokensWalletFour(address _tokenContract) onlyOwner onlyCreator public {
         require(now >= unlockDates[counterFour]);
         ERC20 token = ERC20(_tokenContract);
         if (counterFour >= 1) {
@@ -238,7 +239,7 @@ contract TimeLockedWallet {
 
     }
 
-    function withdrawTokensWalletFive(address _tokenContract) onlyOwner public {
+    function withdrawTokensWalletFive(address _tokenContract) onlyOwner onlyCreator public {
         require(now >= unlockDates[counterFive]);
         ERC20 token = ERC20(_tokenContract);
         if (counterFive >= 1) {
@@ -253,7 +254,7 @@ contract TimeLockedWallet {
 
     }
 
-    function withdrawTokensWalletSix(address _tokenContract) onlyOwner public {
+    function withdrawTokensWalletSix(address _tokenContract) onlyOwner onlyCreator public {
         require(now >= unlockDates[counterSix]);
         ERC20 token = ERC20(_tokenContract);
         if (counterSix >= 1) {
