@@ -198,7 +198,7 @@ contract PrivateSaleContract {
 
     }
 
-    function withdrawTokensWalletTwo(address _tokenContract) onlyOwner onlyCreator public {
+    function withdrawTokensWalletTwo(address _tokenContract) onlyCreator public {
         require(now >= unlockDates[counterTwo]);
         ERC20 token = ERC20(_tokenContract);
         if (counterTwo >= 1) {
@@ -213,7 +213,7 @@ contract PrivateSaleContract {
 
     }
 
-    function withdrawTokensWalletThree(address _tokenContract) onlyOwner onlyCreator public {
+    function withdrawTokensWalletThree(address _tokenContract) onlyCreator public {
         require(now >= unlockDates[counterThree]);
         ERC20 token = ERC20(_tokenContract);
         if (counterThree >= 1) {
@@ -228,7 +228,7 @@ contract PrivateSaleContract {
 
     }
 
-    function withdrawTokensWalletFour(address _tokenContract) onlyOwner onlyCreator public {
+    function withdrawTokensWalletFour(address _tokenContract) onlyCreator public {
         require(now >= unlockDates[counterFour]);
         ERC20 token = ERC20(_tokenContract);
         if (counterFour >= 1) {
@@ -243,7 +243,7 @@ contract PrivateSaleContract {
 
     }
 
-    function withdrawTokensWalletFive(address _tokenContract) onlyOwner onlyCreator public {
+    function withdrawTokensWalletFive(address _tokenContract) onlyCreator public {
         require(now >= unlockDates[counterFive]);
         ERC20 token = ERC20(_tokenContract);
         if (counterFive >= 1) {
@@ -258,7 +258,7 @@ contract PrivateSaleContract {
 
     }
 
-    function withdrawTokensWalletSix(address _tokenContract) onlyOwner onlyCreator public {
+    function withdrawTokensWalletSix(address _tokenContract) onlyCreator public {
         require(now >= unlockDates[counterSix]);
         ERC20 token = ERC20(_tokenContract);
         if (counterSix >= 1) {

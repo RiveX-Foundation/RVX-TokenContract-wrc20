@@ -255,9 +255,9 @@ contract RVXToken is MinterRole, IERC20 {
         _name = "RiveX Token";
         _symbol = "RVX";
         _decimals = 18;
-        _totalSupply = 4000000000 ether;
+        _totalSupply = 1900000000 ether;
         _maxAmount = 4000000000 ether;
-        _balances[newOwner] = 4000000000 ether;
+        _balances[newOwner] = 1900000000 ether;
     }
 
     function depositWAN() public payable { //added deposit wan function

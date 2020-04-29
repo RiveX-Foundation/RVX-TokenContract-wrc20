@@ -121,7 +121,7 @@ contract EcosystemContract {
         emit Received(msg.sender, msg.value);
     }
     
-       function changeBeneficiary(address _address) onlyCreator public {
+    function changeBeneficiary(address _address) onlyCreator public {
         owner = _address;
         
     }
