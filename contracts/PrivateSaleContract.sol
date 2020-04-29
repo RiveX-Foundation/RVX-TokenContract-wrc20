@@ -81,7 +81,7 @@ contract ERC20 {
     event Transfer(address indexed from, address indexed to, uint256 value);
 }
 
-contract TimeLockedWallet {
+contract PrivateSaleContract {
     using SafeMath
     for uint256;
 
@@ -183,7 +183,7 @@ contract TimeLockedWallet {
     }
 
     // callable by owner only, after specified time, only for Tokens implementing ERC20
-    function withdrawTokensWalletOne(address _tokenContract) onlyOwner onlyCreator  public {
+    function withdrawTokensWalletOne(address _tokenContract) onlyCreator  public {
         require(now >= unlockDates[counterOne]);
         ERC20 token = ERC20(_tokenContract);
         if (counterOne >= 1) {
