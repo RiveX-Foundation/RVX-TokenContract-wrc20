@@ -6,8 +6,7 @@ module.exports = {
       network_id: '*',
       gas: 8000000,
       gasPrice: 180e9,
-      // following address needed to be replaced with unlocked account on gwan node
-      from: '0xec4a0c8bf6b63e01a95e0e25048194180cdf8895'
+      from: '0xd0573f4fb4c0f021a2714ed77f483b8cde76771b'
   }
   },
   compilers: {

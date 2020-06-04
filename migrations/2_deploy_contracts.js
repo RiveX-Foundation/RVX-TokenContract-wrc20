@@ -1,5 +1,6 @@
 var TeamContract = artifacts.require("TeamContract");
 var RVXToken = artifacts.require("RVXToken");
+var USDT = artifacts.require("USDT");
 var PrivateSaleContract = artifacts.require("PrivateSaleContract");
 var EcosystemContract = artifacts.require("EcosystemContract");
 var FoundationContract = artifacts.require("FoundationContract");
@@ -28,11 +29,12 @@ module.exports = function(deployer) {
   var ecosystemanme = "Ecosystem";
   var partnersname = "Partners";
 
- //deployer.deploy(RVXToken,rvxowner);
- deployer.deploy(TeamContract,teamcreator,beneficiaryplaceholder,unlockdateteam,teamname);
+ deployer.deploy(USDT);
+
+ /*deployer.deploy(TeamContract,teamcreator,beneficiaryplaceholder,unlockdateteam,teamname);
  deployer.deploy(PrivateSaleContract,privatesalecreator,beneficiaryplaceholder,unlockdateprivate,privatesalename);
  deployer.deploy(EcosystemContract,ecosystemcreator,beneficiaryplaceholder,unlockdateecosystem,ecosystemanme);
  deployer.deploy(FoundationContract,foundationcreator,beneficiaryplaceholder,unlockdatefoundation,foundationname);
- deployer.deploy(PartnerContract,partnerscreator,beneficiaryplaceholder,unlockdatepartner,partnersname);
+ deployer.deploy(PartnerContract,partnerscreator,beneficiaryplaceholder,unlockdatepartner,partnersname);*/
 
 };
