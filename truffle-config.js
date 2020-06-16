@@ -5,8 +5,8 @@ module.exports = {
       port: 8686,
       network_id: '*',
       gas: 8000000,
-      gasPrice: 180e9,
-      from: '0xd0573f4fb4c0f021a2714ed77f483b8cde76771b'
+      gasPrice: 1e9,
+      from: '0xec4a0c8bf6b63e01a95e0e25048194180cdf8895'
   }
   },
   compilers: {
